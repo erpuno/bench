@@ -5,16 +5,24 @@ defmodule Bench.MixProject do
     [
       app: :bench,
       version: "0.1.0",
-      description: "BENCH performance tool",
       elixir: "~> 1.7",
+      description: description(),
+      package: package(),
       start_permanent: Mix.env() == :prod,
       deps: deps()
     ]
   end
 
-  def package() do
+  defp description do
+    """
+    BENCH performance tool for distributed systems
+    """
+  end
+
+  defp package do
     [
-      files: ~w(doc priv lib src mix.exs LICENSE),
+      files: ["lib", "mix.exs", "README*", "LICENSE*"],
+      maintainers: ["Georgi Spasov", "Maxim Sokhatsky"],
       licenses: ["ISC"],
       links: %{"GitHub" => "https://github.com/o7/bench"}
     ]
