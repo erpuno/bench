@@ -31,7 +31,8 @@ defmodule Bench.MixProject do
   def application do
     [
       extra_applications: [:logger],
-      mod: {Bench.Application, []}, applications: [:gun, :n2o]
+      mod: {Bench.Application, []},
+      applications: [:gun, :n2o]
     ]
   end
 
