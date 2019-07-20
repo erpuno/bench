@@ -12,6 +12,17 @@ defmodule Connection do
     {:reply, [], p}
   end
 
+  def proc({:gun_up, conn, :http}, p) do
+    :gun.ws_upgrade(conn, "/ws", [])
+    {:ok, p}
+  end
+
+  def proc({:gun_down, conn, _}, p) do
+    IO.inspect(p)
+    IO.inspect(conn)
+    {:reply, [], p}
+  end
+
   def proc({:send_msg, message}, pi(state: {conn,_}) = p) do
     :gun.ws_send(conn, {:text, message})
     {:reply, [], p}
