@@ -1,14 +1,16 @@
 defmodule Connection do
   use N2O
 
-  def timer_restart(), do: :erlang.send_after(30000, self(), {:timer, :ping})
+  def timer_restart(), do: :erlang.send_after(10000, self(), {:timer, :ping})
 
   def proc(:init, p) do
-    {:ok, conn} = :gun.open('localhost', 8042, %{protocols: [:http], transport: :tls})
-    proc({:gun_up, conn, :http}, p)
+    :gun.open('localhost', 8042, %{protocols: [:http], transport: :tls})
+    {:ok, p}
   end
 
-  def proc({:timer, :ping}, pi(state: {[], [], []}) = p), do: {:reply, [], p}
+  def proc({:timer, :ping}, pi(state: {[], [], []}) = p) do
+    {:reply, [], p}
+  end
 
   def proc({:timer, :ping}, pi(state: {conn, ref, timer}) = p) do
     :erlang.cancel_timer(timer)
@@ -16,7 +18,9 @@ defmodule Connection do
     {:reply, [], pi(p, state: {conn, ref, timer_restart()})}
   end
 
-  def proc({:gun_ws, _, _, {:text, "PONG"}}, p), do: {:reply, [], p}
+  def proc({:gun_ws, _, _, {:text, "PONG"}}, p) do
+    {:reply, [], p}
+  end
 
   def proc({:gun_ws, _, _, msg}, p) do
     IO.inspect("Income #{inspect(msg)}")
@@ -25,10 +29,15 @@ defmodule Connection do
 
   def proc({:gun_up, conn, :http}, pi(name: name) = p) do
     IO.inspect("Up #{inspect(name)}")
-    {:ok, pi(p, state: {conn, :gun.ws_upgrade(conn, "/ws", []), timer_restart()})}
+    ref = :gun.ws_upgrade(conn, "/ws", [])
+    {:ok, pi(p, state: {conn, ref, timer_restart()})}
   end
 
-  def proc({:gun_upgrade, _, _ref, _ws, _headers}, p), do: {:reply, [], p}
+  def proc({:gun_upgrade, conn, ref, _ws, _headers}, pi(name: name, state: {_, _, timer}) = p) do
+    :erlang.cancel_timer(timer)
+    IO.inspect("Upgrade #{inspect(name)}")
+    {:reply, [], pi(p, state: {conn, ref, timer_restart()})}
+  end
 
   def proc({:gun_down, _, _proto, _reason, _, _}, pi(name: name) = p) do
     IO.inspect("Down #{inspect(name)}")
