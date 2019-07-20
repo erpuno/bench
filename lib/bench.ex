@@ -13,6 +13,9 @@ defmodule Bench do
 
   """
   def hello do
-    :world
+    for num <- 1..500 do
+      x = Bench.Application.initialize("Bench #{num}")
+      IO.inspect("User: #{num} pid: #{inspect(x)}")
+    end
   end
 end

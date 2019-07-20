@@ -4,15 +4,15 @@ defmodule Bench.Application do
 
   def start(_, _) do
     x = Supervisor.start_link([], strategy: :one_for_one, name: :bench) |> IO.inspect(label: "Supervisor")
-    initialize()
+    # initialize("Bench")
     x
   end
 
-  def initialize() do
+  def initialize(name) do
     :n2o_pi.start(pi(module: Connection,
                      table: :caching,
                      sup: :bench,
                      state: [],
-                     name: "Bench")) |> IO.inspect()
+                     name: name))
   end
 end
