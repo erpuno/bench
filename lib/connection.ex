@@ -1,7 +1,7 @@
 defmodule Connection do
   use N2O
 
-  def timer_restart(), do: :erlang.send_after(2000, self(), {:timer, :ping})
+  def timer_restart(), do: :erlang.send_after(20000, self(), {:timer, :ping})
 
   def proc(:init, p) do
     :gun.open('localhost', 8042, %{protocols: [:http], transport: :tls})
