@@ -3,16 +3,16 @@ defmodule Bench.Application do
   use N2O
 
   def start(_, _) do
-    x = Supervisor.start_link([], strategy: :one_for_one, name: :bench)
+    x = Supervisor.start_link([], strategy: :one_for_one, name: :bench) |> IO.inspect(label: "Supervisor")
     initialize()
     x
   end
 
   def initialize() do
-    IO.inspect :n2o_pi.start(pi(module: Connection,
+    :n2o_pi.start(pi(module: Connection,
                      table: :caching,
                      sup: :bench,
                      state: [],
-                     name: "Bench"))
+                     name: "Bench")) |> IO.inspect()
   end
 end
