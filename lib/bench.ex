@@ -13,8 +13,9 @@ defmodule Bench do
 
   """
   def hello do
-    for num <- 1..500 do
+    for num <- 1..10000 do
       Bench.Application.initialize("Bench #{num}")
+      :timer.sleep 1
     end
   end
 end
