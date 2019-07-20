@@ -5,6 +5,7 @@ defmodule Bench.Application do
   def start(_, _) do
     x = Supervisor.start_link([], strategy: :one_for_one, name: :bench) |> IO.inspect(label: "Supervisor")
     # initialize("Bench")
+    Bench.hello
     x
   end
 
