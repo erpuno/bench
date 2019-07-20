@@ -13,9 +13,10 @@ defmodule Bench do
 
   """
   def hello do
-    for num <- 1..10000 do
+    for num <- 1..50000 do # C50K is doable on MacBook Air
       Bench.Application.initialize("Bench #{num}")
       :timer.sleep 1
     end
   end
+
 end
