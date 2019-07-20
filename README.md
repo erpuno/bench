@@ -1,21 +1,33 @@
-# Bench
+# BENCH: Performance tool for distributed systems
 
-**TODO: Add description**
+Stand
+-----
 
-## Installation
-
-If [available in Hex](https://hex.pm/docs/publish), the package can be installed
-by adding `bench` to your list of dependencies in `mix.exs`:
-
-```elixir
-def deps do
-  [
-    {:bench, "~> 0.1.0"}
-  ]
-end
+```
+$ git clone https://github.com/o7/chat && cd chat
+$ mix deps.get
+$ iex -S mix
 ```
 
-Documentation can be generated with [ExDoc](https://github.com/elixir-lang/ex_doc)
-and published on [HexDocs](https://hexdocs.pm). Once published, the docs can
-be found at [https://hexdocs.pm/bench](https://hexdocs.pm/bench).
+Bench
+-----
+
+```
+$ git clone https://github.com/o7/bench && cd bench
+$ mix deps.get
+$ iex -S mix
+```
+
+Check connections
+-----------------
+
+```
+$ lsof -Pn -i4 | grep "8042 " | wc -l
+```
+
+Credits
+-------
+
+* Georgi Spasov
+* Maxim Sokhatsky
 
