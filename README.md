@@ -1,5 +1,14 @@
 # BENCH: Performance tool for distributed systems
 
+Feartures
+---------
+
+* Multi-server support
+* Scripting Language for tests scripts
+* Multi-protocol support
+* Telemetry Dashboarding
+* Tiny Size
+
 Defaults and Limits
 -------------------
 
@@ -15,8 +24,8 @@ Setup
 * `sudo sysctl -w net.inet.ip.portrange.first=1024`
 * `sudo sysctl -w net.inet.ip.portrange.hifirst=1024`
 
-Stand
------
+Run Investigated Application
+----------------------------
 
 ```sh
 $ git clone https://github.com/o7/chat && cd chat
@@ -24,8 +33,8 @@ $ mix deps.get
 $ iex -S mix
 ```
 
-Bench
------
+Run Bench
+---------
 
 ```sh
 $ git clone https://github.com/o7/bench && cd bench
