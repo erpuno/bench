@@ -3,9 +3,8 @@
 Feartures
 ---------
 
-* Multi-server support
+* Multi-server, Multi-IP-address, Multi-Protocol support
 * Scripting Language for tests scripts
-* Multi-protocol support
 * Telemetry Dashboarding
 * Tiny Size
 
