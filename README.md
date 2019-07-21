@@ -26,7 +26,7 @@ Setup
 Run Investigated Application
 ----------------------------
 
-As experiment we took CHAT applicatioin based on `cowboy`, `n2o`, `kvs`, `syn`, `asn1` applicatiioins.
+As example we run CHAT application which depends on  `cowboy`, `n2o`, `kvs`, `syn`, `asn1`.
 The size of CHAT is 100 LOC.
 
 ```sh
