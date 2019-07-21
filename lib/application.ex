@@ -7,7 +7,7 @@ defmodule Bench.Application do
       Supervisor.start_link([], strategy: :one_for_one, name: :bench)
       |> IO.inspect(label: "Supervisor")
 
-    Bench.hello()
+    Bench.run()
     x
   end
 
