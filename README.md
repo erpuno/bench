@@ -7,8 +7,8 @@ Defaults and Limits
 * Linux: 32768 — 61000 = C28232
 * Maximum per IP address: 1024 — 65535 = C64511
 
-MacBook Air Setup
------------------
+Mac Setup
+---------
 
 * https://gist.github.com/tombigel/d503800a282fcadbee14b537735d202c
 * `sudo sysctl -w net.inet.ip.portrange.first=1024`
