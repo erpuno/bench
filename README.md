@@ -26,6 +26,9 @@ Setup
 Run Investigated Application
 ----------------------------
 
+As experiment we took CHAT applicatioin based on `cowboy`, `n2o`, `kvs`, `syn`, `asn1` applicatiioins.
+The size of CHAT is 100 LOC.
+
 ```sh
 $ git clone https://github.com/o7/chat && cd chat
 $ mix deps.get
@@ -34,6 +37,9 @@ $ iex -S mix
 
 Run Bench
 ---------
+
+Bench applicatioin is using `gun` as WebSocket client.
+The size of BENCH is 100 LOC.
 
 ```sh
 $ git clone https://github.com/o7/bench && cd bench
