@@ -41,8 +41,8 @@ $ lsof -Pn -i4 | grep "8042 " | grep ESTABLISHED | wc -l
 ```
 
 ```elixir
-iex(2)> send :n2o_pi.pid(:caching,"Bench 16000"), {:send_msg, "AUTH maxim"}
-"Send \"Bench 16000\""
+iex(2)> send :n2o_pi.pid(:caching,"Bench 50000"), {:send_msg, "AUTH maxim"}
+"Send \"Bench 50000\""
 {:send_msg, "AUTH maxim"}
 iex(3)> "Income {:text, \"USER maxim\"}"
 ```
