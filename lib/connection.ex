@@ -4,8 +4,8 @@ defmodule Connection do
   def timer_restart(), do: :erlang.send_after(20000, self(), {:timer, :ping})
 
   def proc(:init, p) do
-#    :gun.open('chat-1.n2o.dev', 8042, %{protocols: [:http], transport: :tls}) # 'chat-2.n2o.space' - server host
-    IO.inspect :gun.open('chat-1.n2o.dev', 8042, %{protocols: [:http], transport: :tls}) # 'chat-2.n2o.space' - server host
+    {:ok, conn} = :gun.open('chat-1.n2o.dev', 8042, %{protocols: [:http], transport: :tls}) # 'chat-2.n2o.space' - server host
+    :gun.ws_upgrade(conn, "/ws", [])
     {:ok, p}
   end
 
