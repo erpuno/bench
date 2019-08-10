@@ -40,7 +40,7 @@ defmodule Bench.MixProject do
     [
       {:ex_doc, "~> 0.21.1", only: :dev, runtime: false},
       {:gun, "~> 1.3.0"},
-      {:n2o, "~> 6.7.4"}
+      {:n2o, "~> 6.8.1"}
     ]
   end
 end
